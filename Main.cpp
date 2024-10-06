@@ -11,11 +11,12 @@
 #include <vector>     // For vector container
 #include <fstream>    // For file operations
 #include <ctime>      // For time()
+#include <random>     // For generating random numbers
 
 using namespace std;
 
 //Defining constants
-const float minRating = 0.0;
+const float minRating = 1.0;
 const float maxRating = 5.0;
 
 //Struct
@@ -58,7 +59,6 @@ public:
 	void displayData() const {
 		float avgRating = 0.0;
 		cout << "Movie: " << title << endl;
-		cout << "Reviews: ";
 		output(const_cast<Review*>(head), avgRating); //we utilize const_cast here to match our function signature 
 
 		if (head) {
@@ -75,6 +75,9 @@ public:
 
 //main()
 int main() {
+	//FOR RANDOM SCORE GENERATION
+	srand(static_cast<unsigned int>(time(0)));
+
 	
 	// Container for Movie objects using vector
 	vector<Movie> movies;
@@ -82,8 +85,8 @@ int main() {
 	vector<string> comments;
 
 	//Movie objects
-	Movie movie1("The Matrix");
-	Movie movie2("Inception");
+	Movie movie1("Whiplash");
+	Movie movie2("Arrival");
 
 	// Add movies to  container
 	movies.push_back(movie1); 
@@ -144,7 +147,7 @@ void output(Review* h, float& avg) {
 	}
 	//Now, we create a while loop to transverse the list
 	while (current) {
-		cout << "      > Review #" << count++ << ": " << current->rating << ": " << current->comments << endl;
+		cout << "> Review #" << count++ << ": " << current->rating << ": " << current->comments << endl;
 		total += current->rating; // add current rating to total
 		current = current->next; //move to next review
 	}
