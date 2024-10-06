@@ -10,6 +10,8 @@
 #include <cctype>    // For toupper()
 #include <vector>     // For vector container
 #include <fstream>    // For file operations
+#include <ctime>      // For time()
+#include <cctype>     // For toupper()
 using namespace std;
 
 //Defining constants
@@ -112,12 +114,21 @@ void deleteReview(Review*& h) {
 }
 
 string randomRating() {
+	//We need to generate a random score for our movie
+	int randomScore = rand() % static_cast<int>((maxRating - minRating) * 10 + 1) + static_cast<int>(minRating * 10);
 
+	//Now, we convert back to a float with one decmical
+	float rating = static_cast<float>(randomScore) / 10.0f;
+
+	//return
+	return to_string(rating);
 };
 // readingFile() reads comments from an external file and stores them in a vector
 // arguments: filename as string, reference to vector<string> to store comments
 // returns: boolean indicating success or failure
 bool readingFile(const string& filename, vector<string>& comments) {
+	string line; //define local
+
 	//open the file for reading
 	ifstream inFile(filename);
 
@@ -126,6 +137,14 @@ bool readingFile(const string& filename, vector<string>& comments) {
 		return false; // Indicates failure
 	}
 
+	//reads file
+	while (getline(inFile, line)) { 
+		if (!line.empty()) {
+			comments.push_back(line);
+		}
+	}
+	inFile.close(); // close file
+	return true;
 }
 
 
