@@ -81,13 +81,43 @@ int main() {
 	// Vector to hold comments read from the file
 	vector<string> comments;
 
-	// Initialize Movie objects
+	//Movie objects
 	Movie movie1("The Matrix");
 	Movie movie2("Inception");
 
-	// Add movies to the container
+	// Add movies to  container
 	movies.push_back(movie1); 
 	movies.push_back(movie2);
+
+	// read comments from external file
+	const string filename = "comments.txt";
+	if (!readingFile(filename, comments)) {
+		cerr << "Failed to read comments from file: " << filename << endl;
+		return 1; // Exit with error code
+	}
+
+
+	//assigning reviews here!!!!! (final part!!!!!)
+
+
+
+
+	// checking to see if there's enough comments
+	if (comments.size() < 4) {
+		cerr << "Not enough comments in the file. At least 4 comments are required." << endl;
+		return 1;
+	}
+
+	// Optionally, add more reviews if available
+	for (size_t i = 4; i < comments.size(); ++i) {
+		// Alternate adding to movies
+		movies[i % movies.size()].addReview(comments[i], stof(randomRating()));
+	}
+
+	// Display all reviews for each movie
+	for (const auto& movie : movies) {
+		movie.displayData();
+	}
 
 	return 0;
 }
