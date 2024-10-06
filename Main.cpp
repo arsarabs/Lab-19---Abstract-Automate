@@ -66,12 +66,28 @@ public:
 		}
 	}
 
+	// Function to get the movie title
+	string getTitle() const {
+		return title;
+	}
+
 };
 
 //main()
 int main() {
 	
-	//actually, before i work on main, i need to make my movie class!
+	// Container for Movie objects using vector
+	vector<Movie> movies;
+	// Vector to hold comments read from the file
+	vector<string> comments;
+
+	// Initialize Movie objects
+	Movie movie1("The Matrix");
+	Movie movie2("Inception");
+
+	// Add movies to the container
+	movies.push_back(movie1); 
+	movies.push_back(movie2);
 
 	return 0;
 }
