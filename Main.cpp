@@ -26,7 +26,7 @@ struct Review {
 };
 
 //Function Prototypes (modified)
-void output(Review*& h, float& avg);
+void output(Review* h, float& avg);
 void addReviewHead(Review*& h, float rating, string comments);
 void addReviewTail(Review*& h, float rating, string comments);
 void deleteReview(Review*& h);
@@ -61,6 +61,9 @@ public:
 		cout << "Reviews: ";
 		output(const_cast<Review*>(head), avgRating); //we utilize const_cast here to match our function signature 
 
+		if (head) {
+			cout << "Average Rating: " << fixed << setprecision(1) << avgRating << endl;
+		}
 	}
 
 };
