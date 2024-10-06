@@ -11,7 +11,7 @@
 #include <vector>     // For vector container
 #include <fstream>    // For file operations
 #include <ctime>      // For time()
-#include <cctype>     // For toupper()
+
 using namespace std;
 
 //Defining constants
@@ -99,6 +99,13 @@ int main() {
 
 	//assigning reviews here!!!!! (final part!!!!!)
 
+	//movie1
+	movies[0].addReview(comments[0], stof(randomRating()));
+	movies[0].addReview(comments[1], stof(randomRating()));
+
+	//movie1
+	movies[1].addReview(comments[2], stof(randomRating()));
+	movies[1].addReview(comments[3], stof(randomRating()));
 
 
 
@@ -121,11 +128,11 @@ int main() {
 
 	return 0;
 }
-
+ 
 // outputReviews() displays all reviews in the linked list and calculates the average rating
 // arguments: Node pointer to the head of the list, reference to a float to store the average
 // returns: void
-void output(Review*& h, float& avg) {
+void output(Review* h, float& avg) {
 	//define some local variables
 	int count = 1;           // Counter to number each review
 	float total = 0.0;       // Variable to accumulate total ratings
