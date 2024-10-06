@@ -52,14 +52,15 @@ public:
 	void addReview(string comment, float rating) {
 		addReviewHead(head, rating, comment);
 	}
-
+	 
 	//I need a function to display the data (reviews/ratings)
 	//Also, will display data in a neat format
 	void displayData() const {
 		float avgRating = 0.0;
 		cout << "Movie: " << title << endl;
 		cout << "Reviews: ";
-		output(const_)
+		output(const_cast<Review*>(head), avgRating); //we utilize const_cast here to match our function signature
+
 	}
 
 };
