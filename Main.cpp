@@ -33,6 +33,36 @@ void deleteReview(Review*& h);
 string randomRating();
 bool readingFile(const string& filename, vector<string>& comments);
 
+//Movie Class
+class Movie {
+private:
+	Review* head; // head of linked list for our movie reviews
+	string title;
+
+public:
+	//Constructor
+	Movie(string movieTitle) : title(movieTitle), head(nullptr){}
+
+	//Destructor
+	~Movie() {
+		deleteReview(head);
+	}
+
+	//Add a review
+	void addReview(string comment, float rating) {
+		addReviewHead(head, rating, comment);
+	}
+
+	//I need a function to display the data (reviews/ratings)
+	//Also, will display data in a neat format
+	void displayData() const {
+		float avgRating = 0.0;
+		cout << "Movie: " << title << endl;
+		cout << "Reviews: ";
+		output(const_)
+	}
+
+};
 
 //main()
 int main() {
