@@ -36,8 +36,8 @@ bool readingFile(const string& filename, vector<string>& comments);
 
 //main()
 int main() {
-
-
+	
+	//actually, before i work on main, i need to make my movie class!
 
 	return 0;
 }
