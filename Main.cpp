@@ -59,7 +59,7 @@ public:
 		float avgRating = 0.0;
 		cout << "Movie: " << title << endl;
 		cout << "Reviews: ";
-		output(const_cast<Review*>(head), avgRating); //we utilize const_cast here to match our function signature
+		output(const_cast<Review*>(head), avgRating); //we utilize const_cast here to match our function signature 
 
 	}
 
